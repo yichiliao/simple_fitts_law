@@ -7,7 +7,7 @@ File study_data.csv contains part of the actual study result from Berkeley Fitts
 sklearn is required. Then run: 
 ```bash
 python3 simple_fitts_law.py
-``
+```
 
 The result before outlier removal will be visualized in the same folder:
 ![raw]('raw_data.png')
