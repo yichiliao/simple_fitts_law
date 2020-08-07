@@ -16,6 +16,8 @@ sklearn is required. Then run:
 python3 simple_fitts_law.py
 ```
 
+Note that in the dataset (study_data.csv), each line is a task. The first value is distance, the second value is width of target, and the last value is the completion time (MT).
+
 The result before outlier removal will be visualized in the same folder:
 ![raw](raw_data.png)
 
