@@ -6,6 +6,8 @@ The calculation is based on wikipedia. In particular the version of Prof. Scott 
 
 ![fitts](fitts_equation.png)
 
+In such a case, the Index of Difficulty is log(D/2+1).
+
 
 ## Running the program 
 
