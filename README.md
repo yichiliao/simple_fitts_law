@@ -20,6 +20,8 @@ The result after outlier removal is as follow. The black dots are the inliers an
 Ransac is one of the most most commonly used method to remove outliers; which is especially useful when the data is quite noisy. The program contains RANSAC. You just need to change the iteration number and threshold in line 82, 83.
 
 ```bash
+## Set the N steps and the threshold
+## YOU CAN TUNE THESE TWO VALUES TO EFFECTIVELY REMOVE OUTLIERS! ##
 steps = 2000
 thres = 1
 ```
