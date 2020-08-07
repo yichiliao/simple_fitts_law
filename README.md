@@ -10,7 +10,7 @@ python3 simple_fitts_law.py
 ```
 
 The result before outlier removal will be visualized in the same folder:
-![raw]('raw_data.png')
+![raw](raw_data.png)
 
 The result after outlier removal is:
-![vis]('fitts_law.png')
+![vis](fitts_law.png)
