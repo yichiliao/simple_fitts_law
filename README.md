@@ -1,4 +1,4 @@
-# A toy version of Fitts' Law
+# Fitts' Law calculation and RANSAC 
 
 File study_data.csv contains part of the actual study result from Berkeley Fitts Law Dataset (http://automation.berkeley.edu/fitts-dataset/). The code shows how the Fitts' Law coefficients are calculated and visualize the results. 
 
