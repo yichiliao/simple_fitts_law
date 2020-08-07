@@ -6,17 +6,18 @@ import math
 csv_file = open('study_data.csv', "r")
 distance = []
 width = []
-index_difficulty = []
-c_time = []
+index_difficulty = [] # index of difficulty
+c_time = []           # completion time (or movement time)
 data =[]
 
-# Read csv file
+## Read csv file
 for line in csv_file:
     this_line = line.replace("\n","").split(",")
     this_line = [float(i) for i in this_line]
     distance.append(this_line[0])
     width.append(this_line[1])
     width.append(this_line[1])
+    # Calculate Index of Difficulty
     i_d = math.log(this_line[0] / this_line[1] +1 ,2)
     index_difficulty.append(i_d)
     c_time.append(this_line[2])
@@ -24,7 +25,7 @@ for line in csv_file:
 data = np.array([index_difficulty, c_time])
 x, y = data[0], data[1]
 plt.scatter(x, y, color='black')
-plt.title('Raw data point distribution')
+plt.title('Raw data distribution')
 plt.xlabel('Index of difficulty')
 plt.ylabel('MT')
 plt.savefig('raw_data.png')
@@ -134,7 +135,7 @@ print ("Red dots are the", inliers_n, "inliers contributes the final fitting, an
 plt.plot(inliers_x, model.predict(inliers_x), color='black')
 plt.scatter(inliers_final[0], inliers_final[1], color = 'black')
 plt.scatter(outliers_final[0], outliers_final[1], color = 'red')
-plt.title('Final point distribution')
+plt.title('Final distribution')
 plt.xlabel('Index of difficulty')
 plt.ylabel('MT')
 plt.savefig('fitts_law.png')
