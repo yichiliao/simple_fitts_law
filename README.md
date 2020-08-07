@@ -4,7 +4,8 @@ File study_data.csv contains part of the actual study result from Berkeley Fitts
 
 The calculation is based on wikipedia. In particular the version of Prof. Scott MacKenzie:
 
-${f(x)=a_nx^n+a_{n-1}x^{n-1}+a_{n-2}x^{n-2}}+\cdots$
+![fitts](fitts_equation.png)
+
 
 ## Running the program 
 
