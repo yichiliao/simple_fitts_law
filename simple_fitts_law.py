@@ -35,6 +35,20 @@ plt.close()
 
 ## The Ransac Function ##
 ## DON'T TOUCH THIS!   ##
+def compute_dist(point, line):
+    # point (x, y)
+    # line = (a, b, c) [ax + by + c = 0]
+    a, b, c = line
+    x, y = point
+    dist = abs(a*x + b*y + c) / math.sqrt(a * a + b * b)
+    return dist
+
+def lineFromPoints(p1, p2): 
+    a = p2[1] - p1[1] 
+    b = p1[0] - p2[0]  
+    c = a*(p1[0]) + b*(p2[1])
+    return a, b, c
+
 def ransac(steps, threshold):
     x_line = np.array([0,0])
     y_line = np.array([0,0])
@@ -48,12 +62,8 @@ def ransac(steps, threshold):
         # Get the line (ax+by=d) based on the 2 points
         xs = np.array([data[0][idx1],data[0][idx2]])
         ys = np.array([data[1][idx1],data[1][idx2]])
-        tmp_a = (ys[1]-ys[0])/(xs[1]-xs[0])
-        tmp_b = -1
-        magnitude = np.sqrt(tmp_a**2+tmp_b**2)
-        tmp_a = tmp_a / magnitude
-        tmp_b = tmp_b / magnitude
-        tmp_d = tmp_a*xs[0] + tmp_b*ys[0]
+        line = lineFromPoints(data[:, idx1], data[:, idx2])
+
         
         inliers_x = []
         inliers_y = []
@@ -63,7 +73,9 @@ def ransac(steps, threshold):
         for i in range(len(data[0])):
             # get distance from a point to the line
             tmp_dot = [data[0][i],data[1][i]]
-            dissqr = (data[0][i]*tmp_a + data[1][i]*tmp_b- tmp_d)**2
+            point = data[:, i]
+            dist = compute_dist(point, line)
+            dissqr = dist
             # categorizing inliers and outliers
             if (dissqr < threshold**2):
                 inliers_x.append(tmp_dot[0])
@@ -81,7 +93,7 @@ def ransac(steps, threshold):
 ## Set the N steps and the threshold
 ## YOU CAN TUNE THESE TWO VALUES TO EFFECTIVELY REMOVE OUTLIERS! ##
 steps = 2000
-thres = 1
+thres = 1.5
 
 ## Calculating ransac which returns the final 2 points and the count of inliers
 x_model, y_model, inliers_n = ransac(steps,thres)
